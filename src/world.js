@@ -1,4 +1,4 @@
-import{CHAPTERS,ENEMY_TYPES}from'./data.js';import{seeded}from'./model.js';
+import{CHAPTERS,ENEMY_TYPES}from'./data.js?v=020';import{seeded}from'./model.js?v=020';
 // Authored terrain contours. Deep fronts are solid architecture, not a stream of floating tiles.
 const CONTOURS=[
  [[0,900,700],[1000,740,700],[1840,900,620],[2840,800,700],[3750,850,790],[4720,900,700],[5740,900,620],[6750,900,700],[7760,1140,700]],
@@ -18,7 +18,7 @@ export function buildWorld(chapter,seed=1){const d=CHAPTERS[chapter],r=seeded(se
  if(i>0){const prev=terrain[i-1],end=prev[0]+prev[1],gap=x-end;if(prev[2]-y>35&&prev[2]-y<=100)ledges.push({id:'approach'+i,x:end-100,y:prev[2]-55,w:Math.max(200,gap+120),h:34,oneWay:true,kind:'balcony'});if(prev[2]-y>100)ledges.push({id:'step'+i,x:end-50,y:prev[2]-80,w:120,h:26,oneWay:true,kind:'balcony'});if(gap>180&&chapter===6){anchors.push({id:'anchor'+i,x:x+45,y:Math.min(y,prev[2])-130,direction:1},{id:'anchorback'+i,x:end-45,y:Math.min(y,prev[2])-130,direction:-1});}else if(gap>180)ledges.push({id:'bridge'+i,x:end+70,y:Math.min(y,prev[2])-60,w:170,h:28,oneWay:true,kind:chapter===7?'hidden':'bridge',hidden:chapter===7});}
  // Designed side chambers: alternating high and low alcoves, with coins and clues.
  if(i>0&&i<terrain.length-1){const bx=x+Math.min(w-320,260),by=y-85;ledges.push({id:'alcove'+i,x:bx,y:by,w:190+(i%3)*25,h:30,oneWay:true,kind:'balcony'});if(i%2===0){ledges.push({id:'upper'+i,x:bx+180,y:by-85,w:210,h:34,oneWay:true,kind:'balcony'});objects.push(ob('chest'+i,'chest',bx+270,by-85,{fish:45+chapter*8,rarity:i%4===0?'relic':'cache'}))}else objects.push(ob('stash'+i,'stash',bx+80,by,{item:i%3===0?'bomb':'ration'}));}
- if(i>0&&i<terrain.length-1){const type=d.enemies[i%d.enemies.length],t=ENEMY_TYPES[type];for(let k=0;k<(i%3===0?3:2);k++){const ex=x+120+k*180;if(ex>x+w-50)break;enemies.push({id:'enemy'+i+'-'+k,type,x:ex,y:y-46,w:36,h:46,home:ex,left:x+45,right:x+w-45,hp:t.hp,maxHp:t.hp,dir:k%2?1:-1,state:'patrol',timer:r(),cool:1+r(),vy:0,hit:0,elite:chapter>3&&k===0&&i%4===0});}}
+ if(i>0&&i<terrain.length-1){const type=d.enemies[i%d.enemies.length],t=ENEMY_TYPES[type];for(let k=0;k<(i%3===0?3:2);k++){const ex=x+120+k*180;if(ex>x+w-50)break;enemies.push({id:'enemy'+i+'-'+k,type,x:ex,y:y-(t.h||46)-(t.fly?90:0),w:t.w||36,h:t.h||46,home:ex,homeY:y-(t.h||46)-(t.fly?90:0),left:x+45,right:x+w-45,hp:t.hp,maxHp:t.hp,dir:k%2?1:-1,state:'patrol',timer:r(),cool:1+r(),vy:0,hit:0,elite:chapter>3&&k===0&&i%4===0});}}
  if(i>1&&i<terrain.length-1){const hx=x+w*.7;if(chapter===4)hazards.push({id:'spore'+i,type:'spore',x:hx,y:y-50,w:90,h:50,phase:r()*6});else if(chapter===7||chapter===8)hazards.push({id:'watch'+i,type:'watch',x:hx,y:y-150,w:170,h:150,phase:r()*6});else hazards.push({id:'trap'+i,type:chapter===3?'piston':chapter===6?'wind':'spikes',x:hx,y:y-20,w:65,h:20,phase:r()*6});}
  for(let k=0;k<4;k++)objects.push(ob('fish'+i+'-'+k,'fish',x+90+k*65,y-34,{fish:6+chapter}));
  });
