@@ -1,4 +1,4 @@
-import{CHAPTERS,HEROES,ENEMY_TYPES}from'./data.js?v=020';import{createSpriteCast}from'./sprites.js?v=020';import{levelOf,weaponOf}from'./model.js?v=020';
+import{CHAPTERS,HEROES,ENEMY_TYPES}from'./data.js?v=021';import{createSpriteCast}from'./sprites.js?v=021';import{levelOf,weaponOf}from'./model.js?v=021';
 const W=1280,H=720,PALETTES=[['#55514b','#37383a','#9d8d70'],['#455b5d','#253e45','#9bafa0'],['#565164','#323445','#aaa0b9'],['#695549','#3c3435','#bf9972'],['#4e5c4e','#2f3f39','#a2b291'],['#6c6255','#3f3d3c','#c0ad87'],['#4d5c68','#2b3e50','#a9b6c0'],['#5b564c','#363a3d','#baaa84'],['#5c4c57','#33303f','#ba929c'],['#514553','#2d293a','#b799a6']];
 export class Renderer{
  constructor(canvas){this.canvas=canvas;this.c=canvas.getContext('2d');canvas.width=W*1.5;canvas.height=H*1.5;this.c.setTransform(1.5,0,0,1.5,0,0);this.cast=createSpriteCast();this.atlas=new Image();this.atlas.src='assets/worlds-atlas.webp';this.frame=0;this.tiles={};for(const name of ['meadow','forest','roof','coast','snow','ruins','castle','wood','iron','bark']){const image=new Image();image.src='assets/materials/'+name+'.png';this.tiles[name]=image}this.patterns={};}

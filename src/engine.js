@@ -1,6 +1,6 @@
-import{CHAPTERS,HEROES,ENEMY_TYPES,SKILLS,WEAPONS}from'./data.js?v=020';
-import{stats,weaponOf,levelOf,canEnter,award,addItem,useItem,clamp,seeded}from'./model.js?v=020';
-import{buildWorld,entityBox}from'./world.js?v=020';
+import{CHAPTERS,HEROES,ENEMY_TYPES,SKILLS,WEAPONS}from'./data.js?v=021';
+import{stats,weaponOf,levelOf,canEnter,award,addItem,useItem,clamp,seeded}from'./model.js?v=021';
+import{buildWorld,entityBox}from'./world.js?v=021';
 export const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 export class Game{

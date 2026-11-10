@@ -1,4 +1,4 @@
-import{CHAPTERS,ENEMY_TYPES}from'./data.js?v=020';import{seeded}from'./model.js?v=020';
+import{CHAPTERS,ENEMY_TYPES}from'./data.js?v=021';import{seeded}from'./model.js?v=021';
 // Authored terrain contours. Deep fronts are solid architecture, not a stream of floating tiles.
 const CONTOURS=[
  [[0,900,700],[1000,740,700],[1840,900,620],[2840,800,700],[3750,850,790],[4720,900,700],[5740,900,620],[6750,900,700],[7760,1140,700]],
