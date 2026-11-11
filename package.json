@@ -1,1 +1,1 @@
-{"name":"paws-of-dawn-ii","version":"0.2.0","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.js","dev":"node scripts/serve.js"}}
+{"name":"paws-of-dawn-ii","version":"0.3.0","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.js","dev":"node scripts/serve.js"}}

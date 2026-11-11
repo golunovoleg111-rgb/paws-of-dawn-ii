@@ -1,0 +1,7 @@
+
+### Предметы и ловушки
+
+Production game prop sprite atlas, EXACT 3 columns by 3 rows equal cells. Nine isolated detailed painterly pre-rendered 3D fantasy platformer objects on TRUE transparent background with clear alpha, no backdrop, no gradient, no ground plane, no cast shadows. Side view, each object centered entirely within its cell with ample margins, consistent cinematic light. Row-major: 1 ornate worn wooden treasure chest with brass lock, closed; 2 sturdy square wooden pushable cargo crate with iron straps; 3 small campfire made of crossed logs and lively amber flames; 4 stone checkpoint lantern shrine with blue flame; 5 shallow wide rocky fissure filled with bright orange molten lava, irregular rocky rim, clearly visible readable surface from side-three-quarter view; 6 rough tumbling granite boulder with cracks and angular facets; 7 ancient mechanical puzzle pedestal with brass wheels, engraved runes and blue crystal; 8 weathered parchment clue scroll on a wooden stand; 9 moon relic shrine, carved stone plinth and floating violet crystal. Mature richly textured adventure style, no pixel art, no flat vector symbols, no labels, no UI, no characters, no text. Physical objects only, glow restricted immediately to flame/crystal/lava, fully transparent outside the object.
+
+Исходник: assets/props-v03.png; загрузка: assets/props-v03.webp. Используется для сундуков, грузов, костров, привалов, механизма, подсказки, святилища, лавы и падающего валуна.
+
