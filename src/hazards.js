@@ -8,6 +8,7 @@ export function hazardState(h,time){
 }
 export function safeEnemyStep(e,nextX,world,run){
  if(e.type==='moth'||e.type==='sentinel')return true;
+ if(!e.boss&&(world.sanctuaries||[]).some(z=>{if(!(nextX+e.w>z.x&&nextX<z.x+z.w&&e.y+e.h>z.y&&e.y<z.y+z.h))return false;const already=e.x+e.w>z.x&&e.x<z.x+z.w;return !already||Math.abs(nextX+e.w/2-z.x-z.w/2)<=Math.abs(e.x+e.w/2-z.x-z.w/2)}))return false;
  const feet=e.y+e.h,cx=nextX+e.w/2;
  const blocks=[...world.solids,...world.ledges.filter(b=>!b.hidden||run.revealed.includes(b.id))];
  return blocks.some(b=>cx>=b.x&&cx<=b.x+b.w&&Math.abs(b.y-feet)<18)&&!blocks.some(b=>!b.oneWay&&cx>b.x&&cx<b.x+b.w&&feet>b.y+22&&e.y<b.y+b.h)&&!world.hazards.some(h=>(h.type==='lava'||h.type==='spikes')&&cx>h.x-8&&cx<h.x+h.w+8);
