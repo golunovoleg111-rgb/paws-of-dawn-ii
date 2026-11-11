@@ -1,7 +1,7 @@
-import{scenePanels,dialogueTopics}from'./narrative.js?v=041';
-import{SAVE_KEY,CHAPTERS,HEROES,ITEMS,WEAPONS,SKILLS,MILESTONES,GEAR}from'./data.js?v=041';
-import{readSave,stats,levelOf,weaponOf,purchase,useItem,nextTraining,canEnter,relicChoices}from'./model.js?v=041';
-import{Game}from'./engine.js?v=041';import{Renderer}from'./renderer.js?v=041';import{metrics,targetMetrics,dialsSolved,inputSequence}from'./puzzles.js?v=041';
+import{scenePanels,dialogueTopics}from'./narrative.js?v=050';
+import{SAVE_KEY,CHAPTERS,HEROES,ITEMS,WEAPONS,SKILLS,MILESTONES,GEAR}from'./data.js?v=050';
+import{readSave,stats,levelOf,weaponOf,purchase,useItem,nextTraining,canEnter,relicChoices}from'./model.js?v=050';
+import{Game}from'./engine.js?v=050';import{Renderer}from'./renderer.js?v=050';import{metrics,targetMetrics,dialsSolved,inputSequence}from'./puzzles.js?v=050';
 const $=s=>document.querySelector(s),all=s=>document.querySelectorAll(s);let save=readSave(localStorage,SAVE_KEY),campTab='route',sound=false,audio=null,modalReturn='play',puzzle=null,lastHud=0,lastPaint=0,toastTimer,modalAction=null;
 export const game=new Game(save,onEvent);const renderer=new Renderer($('#game'));const modal=$('#modal'),content=$('#modalContent');
 const clockText=n=>Math.floor(n/60)+':'+String(Math.floor(n%60)).padStart(2,'0');

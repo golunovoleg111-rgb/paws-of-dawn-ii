@@ -12,20 +12,24 @@ export function solveLimb(root,target,a,b,bend=1){
 }
 const smooth=t=>{t=clamp(t,0,1);return t*t*(3-2*t)};
 const lerp=(a,b,t)=>a+(b-a)*t;
+// Ground contact moves backwards relative to the body; the return swing is airborne.
+export function strideAmplitude(speed=110,crouch=false){return crouch?4:speed>150?18:12}
+export function strideAdvance(distance,speed=110,crouch=false){return Math.abs(distance)*Math.PI*.6/strideAmplitude(speed,crouch)}
+export function stepFoot(stride,amplitude=12,lift=9){const t=((stride/(Math.PI*2))%1+1)%1;if(t<.6)return{x:amplitude*(1-2*t/.6),y:0};const u=(t-.6)/.4;return{x:amplitude*(2*smooth(u)-1),y:-Math.sin(u*Math.PI)*lift}}
 export function rigPose({action='idle',time=0,phase=0,stride=time*7,speed=0,weapon='sword',interact=0,widthScale=1}={}){
  const locomotion=action==='walk'||action==='run',crouch=action==='crouch',air=action==='jump',attack=action==='attack',bow=weapon.includes('bow'),hammer=weapon==='hammer';
  const amount=locomotion?clamp((speed||120)/245,.2,1):crouch&&speed>3?.28:0;
  let hip={x:0,y:-40+Math.cos(stride*2)*amount},feet=[{x:-5,y:0},{x:6,y:0}];
- if(amount)feet=[0,Math.PI].map(a=>({x:Math.cos(stride+a)*14*amount,y:-Math.max(0,Math.sin(stride+a))*10*amount}));
+ if(amount)feet=[0,Math.PI].map(a=>stepFoot(stride+a,strideAmplitude(speed),action==='run'?12:8));
  if(air)feet=[{x:-11,y:-5},{x:13,y:-12}];
- if(crouch){hip={x:-7,y:-22};feet=[{x:-14+Math.cos(stride)*3*amount,y:-Math.max(0,Math.sin(stride))*3*amount},{x:19-Math.cos(stride)*3*amount,y:-Math.max(0,-Math.sin(stride))*3*amount}];}
+ if(crouch){hip={x:-7,y:-18};feet=[-14,19].map((x,i)=>{const f=amount?stepFoot(stride+i*Math.PI,4,3):{x:0,y:0};return{x:x+f.x,y:f.y}});}
  // Feet stay planted. Lower the pelvis if a stride would otherwise stretch a leg.
  if(!crouch)for(let i=0;i<2;i++){const dx=feet[i].x-(hip.x+(i?3:-3)),dy=Math.sqrt(Math.max(1,34*34-dx*dx));hip.y=Math.max(hip.y,feet[i].y-7-dy);}
- const shoulder=crouch?{x:17,y:-34}:{x:locomotion?amount*3:0,y:hip.y-28};
+ const shoulder=crouch?{x:9,y:-38}:{x:locomotion?amount*3:0,y:hip.y-28};
  const torsoAngle=Math.atan2(hip.y-shoulder.y,hip.x-shoulder.x)-Math.PI/2;const neck=bodyPoint(shoulder,1.5,4,torsoAngle);
  const head={...neck};
  const roots=armRoots(shoulder,torsoAngle,widthScale);
- let hands=[{x:roots[0].x-2-Math.cos(stride)*7*amount,y:roots[0].y+27},{x:roots[1].x+4+Math.cos(stride)*7*amount,y:roots[1].y+27}],weaponAngle=.12;
+ let hands=[{x:roots[0].x-2-feet[0].x*.5,y:roots[0].y+27},{x:roots[1].x+4-feet[1].x*.5,y:roots[1].y+27}],weaponAngle=.12;
  if(bow&&!attack)hands[1]={x:roots[1].x+9,y:roots[1].y+24};
  if(air)hands=[{x:roots[0].x-14,y:roots[0].y+16},{x:roots[1].x+15,y:roots[1].y+13}];
  if(crouch)hands=[{x:roots[0].x+10,y:roots[0].y+17},{x:roots[1].x+12,y:roots[1].y+17}];
