@@ -1,4 +1,4 @@
-import{atlasCell,isolateFrame,expandCell,frameBounds}from'./animation.js?v=040';
+import{atlasCell,isolateFrame,expandCell,frameBounds}from'./animation.js?v=041';
 export class Props{
  constructor(){this.frames=[];this.ready=this.load();this.shopReady=this.loadShop()}
  async loadShop(){try{const im=new Image();im.src='assets/shop-v04.webp';await im.decode();const cv=document.createElement('canvas');cv.width=im.width;cv.height=im.height;const c=cv.getContext('2d',{willReadFrequently:true});c.drawImage(im,0,0);const b=frameBounds(c.getImageData(0,0,cv.width,cv.height).data,cv.width,{x:0,y:0,w:cv.width,h:cv.height},1);const out=document.createElement('canvas');out.width=b.maxX-b.minX+1;out.height=b.maxY-b.minY+1;out.getContext('2d').drawImage(im,b.minX,b.minY,out.width,out.height,0,0,out.width,out.height);this.shop=out;return true}catch(e){console.warn('Shop unavailable',e.message);return false}}

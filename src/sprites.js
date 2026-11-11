@@ -1,5 +1,5 @@
-import{ArticulatedCast}from'./rig.js?v=040';
-import{createCast}from'./cast.js?v=040';import{frameBounds,atlasCell,animationFrame,isolateFrame,expandCell}from'./animation.js?v=040';
+import{ArticulatedCast}from'./rig.js?v=041';
+import{createCast}from'./cast.js?v=041';import{frameBounds,atlasCell,animationFrame,isolateFrame,expandCell}from'./animation.js?v=041';
 const SPECS={enemies:{file:'enemies.webp?v=021',cols:4,rows:2},court:{file:'court-poses.webp',cols:4,rows:2},creatures:{file:'creatures.webp',cols:4,rows:2}};
 export class SpriteBank{
  constructor(){this.entries={};this.errors=[];this.pending=Object.keys(SPECS).map(name=>this.load(name))}

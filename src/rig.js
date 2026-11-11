@@ -1,5 +1,5 @@
-import{atlasCell,isolateFrame}from'./animation.js?v=040';
-import{rigPose,blendRigPose,bowDrawAmount}from'./motion.js?v=040';
+import{atlasCell,isolateFrame}from'./animation.js?v=041';
+import{rigPose,blendRigPose,bowDrawAmount}from'./motion.js?v=041';
 export const BODY_PROFILES=[
  {name:'misty',scale:1,body:27,head:22,headH:26,limb:1,metal:'#8a919f',dark:'#292c39'},
  {name:'cody',scale:1,body:26,head:22,headH:25,limb:.95,metal:'#9c7c55',dark:'#49352c'},

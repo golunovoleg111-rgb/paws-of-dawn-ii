@@ -1,7 +1,7 @@
-import{cameraTarget,weaponTiming,strikePhase}from'./motion.js?v=040';import{hazardState,safeEnemyStep}from'./hazards.js?v=040';
-import{CHAPTERS,HEROES,ENEMY_TYPES,SKILLS,WEAPONS}from'./data.js?v=040';
-import{stats,weaponOf,levelOf,canEnter,award,addItem,useItem,clamp,seeded}from'./model.js?v=040';
-import{buildWorld,entityBox}from'./world.js?v=040';
+import{cameraTarget,weaponTiming,strikePhase}from'./motion.js?v=041';import{hazardState,safeEnemyStep}from'./hazards.js?v=041';
+import{CHAPTERS,HEROES,ENEMY_TYPES,SKILLS,WEAPONS}from'./data.js?v=041';
+import{stats,weaponOf,levelOf,canEnter,award,addItem,useItem,clamp,seeded}from'./model.js?v=041';
+import{buildWorld,entityBox}from'./world.js?v=041';
 export const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 export class Game{
