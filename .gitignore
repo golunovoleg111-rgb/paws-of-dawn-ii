@@ -2,3 +2,13 @@ node_modules/
 .DS_Store
 Thumbs.db
 .qa.html
+*.blend1
+assets/characters/misty-baked/*-idle/
+assets/characters/misty-baked/*-walk/
+assets/characters/misty-baked/*-run/
+assets/characters/misty-baked/*-crouch/
+assets/characters/misty-baked/*-jump/
+assets/characters/misty-baked/*-interact/
+assets/characters/misty-baked/*-attack/
+assets/characters/misty-baked/studio-preview.png
+assets/characters/misty-baked/preview-walk/

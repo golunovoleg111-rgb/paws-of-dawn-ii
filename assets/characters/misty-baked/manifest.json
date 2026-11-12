@@ -1,0 +1,279 @@
+{
+  "version": 1,
+  "model": "art/blender/misty.blend",
+  "width": 192,
+  "height": 240,
+  "fps": 24,
+  "clips": {
+    "sword-idle": {
+      "count": 8,
+      "fps": 8,
+      "loop": true,
+      "start": 0
+    },
+    "sword-walk": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 8
+    },
+    "sword-run": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 32
+    },
+    "sword-crouch": {
+      "count": 16,
+      "fps": 24,
+      "loop": true,
+      "start": 56
+    },
+    "sword-jump": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 72
+    },
+    "sword-interact": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 84
+    },
+    "sword-attack": {
+      "count": 20,
+      "fps": 24,
+      "loop": false,
+      "start": 96
+    },
+    "sabre-idle": {
+      "count": 8,
+      "fps": 8,
+      "loop": true,
+      "start": 0
+    },
+    "sabre-walk": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 8
+    },
+    "sabre-run": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 32
+    },
+    "sabre-crouch": {
+      "count": 16,
+      "fps": 24,
+      "loop": true,
+      "start": 56
+    },
+    "sabre-jump": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 72
+    },
+    "sabre-interact": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 84
+    },
+    "sabre-attack": {
+      "count": 20,
+      "fps": 24,
+      "loop": false,
+      "start": 96
+    },
+    "bow-idle": {
+      "count": 8,
+      "fps": 8,
+      "loop": true,
+      "start": 0
+    },
+    "bow-walk": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 8
+    },
+    "bow-run": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 32
+    },
+    "bow-crouch": {
+      "count": 16,
+      "fps": 24,
+      "loop": true,
+      "start": 56
+    },
+    "bow-jump": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 72
+    },
+    "bow-interact": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 84
+    },
+    "bow-attack": {
+      "count": 20,
+      "fps": 24,
+      "loop": false,
+      "start": 96
+    },
+    "hammer-idle": {
+      "count": 8,
+      "fps": 8,
+      "loop": true,
+      "start": 0
+    },
+    "hammer-walk": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 8
+    },
+    "hammer-run": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 32
+    },
+    "hammer-crouch": {
+      "count": 16,
+      "fps": 24,
+      "loop": true,
+      "start": 56
+    },
+    "hammer-jump": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 72
+    },
+    "hammer-interact": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 84
+    },
+    "hammer-attack": {
+      "count": 20,
+      "fps": 24,
+      "loop": false,
+      "start": 96
+    },
+    "moonblade-idle": {
+      "count": 8,
+      "fps": 8,
+      "loop": true,
+      "start": 0
+    },
+    "moonblade-walk": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 8
+    },
+    "moonblade-run": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 32
+    },
+    "moonblade-crouch": {
+      "count": 16,
+      "fps": 24,
+      "loop": true,
+      "start": 56
+    },
+    "moonblade-jump": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 72
+    },
+    "moonblade-interact": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 84
+    },
+    "moonblade-attack": {
+      "count": 20,
+      "fps": 24,
+      "loop": false,
+      "start": 96
+    },
+    "royalbow-idle": {
+      "count": 8,
+      "fps": 8,
+      "loop": true,
+      "start": 0
+    },
+    "royalbow-walk": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 8
+    },
+    "royalbow-run": {
+      "count": 24,
+      "fps": 24,
+      "loop": true,
+      "start": 32
+    },
+    "royalbow-crouch": {
+      "count": 16,
+      "fps": 24,
+      "loop": true,
+      "start": 56
+    },
+    "royalbow-jump": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 72
+    },
+    "royalbow-interact": {
+      "count": 12,
+      "fps": 24,
+      "loop": false,
+      "start": 84
+    },
+    "royalbow-attack": {
+      "count": 20,
+      "fps": 24,
+      "loop": false,
+      "start": 96
+    }
+  },
+  "weapons": [
+    "sword",
+    "sabre",
+    "bow",
+    "hammer",
+    "moonblade",
+    "royalbow"
+  ],
+  "camera": "orthographic",
+  "wholeCharacter": true,
+  "scale": 0.6416666666666667,
+  "pivot": [
+    93.88125801086426,
+    198.30017924308777
+  ],
+  "columns": 8,
+  "sourceWidth": 256,
+  "sourceHeight": 320
+}
