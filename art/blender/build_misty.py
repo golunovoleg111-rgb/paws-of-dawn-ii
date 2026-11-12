@@ -8,7 +8,10 @@ from mathutils import Vector, Matrix
 from bpy_extras.object_utils import world_to_camera_view
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
-OUT=ROOT/'assets/characters/misty-baked'
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from anatomy import solve_arm
+REVIEW='--review' in sys.argv
+OUT=ROOT/'work/review-misty' if REVIEW else ROOT/'assets/characters/misty-baked'
 OUT.mkdir(parents=True,exist_ok=True)
 PREVIEW='--preview' in sys.argv
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
@@ -69,11 +72,6 @@ def loft(name,rings,material,bone=None):
   for i in range(n):f.append((j*n+i,j*n+(i+1)%n,(j+1)*n+(i+1)%n,(j+1)*n+i))
  f.extend([tuple(reversed(range(n))),tuple((len(rings)-1)*n+i for i in range(n))])
  return mesh(name,v,f,material,bone,1)
-def two(a,b,L1,L2,bend=-1):
- a,b=Vector(a),Vector(b);d=b-a;r=min(L1+L2-.001,max(abs(L1-L2)+.001,d.length));d.normalize();b=a+d*r
- along=(L1*L1-L2*L2+r*r)/(2*r);off=math.sqrt(max(0,L1*L1-along*along))
- # All limbs articulate in XZ, with a fixed anatomical depth.
- perpendicular=Vector((-d.z,0,d.x));return a+d*along+perpendicular*off*bend,b
 def points(p):
  def cv(q,y=0):return Vector((q['x']/28,y,-q['y']/28))
  hip,shoulder=cv(p['hip']),cv(p['shoulder']);d={'spine':(hip,shoulder),'head':(shoulder+Vector((0,0,.05)),shoulder+Vector((.02,0,.55)))}
@@ -82,7 +80,9 @@ def points(p):
   d['thigh_'+side]=(a,b);d['shin_'+side]=(b,e);d['foot_'+side]=(e,e+Vector((.25,0,-.09)))
   y=.39 if i==0 else -.39;a=shoulder+Vector((.025,y,-.1));old=p['arms'][i];h=Vector(((old['end']['x']-old['root']['x'])/28+shoulder.x,y,-old['end']['y']/28))
   if side=='near':h.x+=.22
-  elbow,hand=two(a,h,16/28,15/28,1)
+  pole=a+Vector((-1,.3 if side=='far' else -.3,-.25))
+  elbow,hand=solve_arm(tuple(a),tuple(h),tuple(pole))
+  elbow,hand=Vector(elbow),Vector(hand)
   d['upper_'+side]=(a,elbow);d['lower_'+side]=(elbow,hand);d['hand_'+side]=(hand,hand+Vector((.02,0,-.18)))
   if side=='near':
    angle=p['weaponAngle']+.22;d['weapon']=(hand,hand+Vector((math.sin(angle),0,math.cos(angle))))
@@ -307,7 +307,7 @@ cam.location=(3,-12,2.7);target=Vector((.05,0,1.8));cam.rotation_euler=(target-c
 scene.render.engine='BLENDER_EEVEE_NEXT';scene.render.film_transparent=True
 if hasattr(scene,'eevee'):scene.eevee.taa_render_samples=16
 equip('sword');pose(CLIPS[0]['frames'][0])
-bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'art/blender/misty.blend'))
+bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'misty-review.blend' if REVIEW else ROOT/'art/blender/misty.blend'))
 if PREVIEW:
  scene.render.resolution_percentage=200;scene.render.filepath=str(OUT/'preview.png');bpy.ops.render.render(write_still=True)
 else:
