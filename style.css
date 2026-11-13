@@ -9,3 +9,5 @@
 @media(prefers-reduced-motion:reduce){.comicPanel{animation:none}}
 
 .comicArt canvas{object-fit:cover}.comicPanel:nth-child(2) .comicArt canvas{transform:scale(1.09)}
+
+.assetGate{position:fixed;inset:0;z-index:1000;background:radial-gradient(ellipse at 50% 45%,#25253b,#10131c 75%);display:grid;place-items:center;text-align:center;padding:32px}.assetGate[hidden]{display:none}.assetGate>div{max-width:480px}.assetGate span{font-size:11px;letter-spacing:.2em;color:#d5b57c}.assetGate h2{font-size:36px}.assetGate p{color:#b7b5c5;line-height:1.8}

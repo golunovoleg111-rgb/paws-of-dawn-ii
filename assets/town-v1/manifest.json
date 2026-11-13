@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "style": "painted-moonlit-fantasy",
+  "version": "1.0.0",
+  "source": {
+    "url": "source.png",
+    "columns": 3,
+    "rows": 2
+  },
+  "assets": {
+    "merchant": {
+      "url": "merchant.webp",
+      "width": 470,
+      "height": 418,
+      "sourceUrl": "source.png",
+      "sourceRect": [
+        29,
+        63,
+        470,
+        418
+      ],
+      "role": "two-storey merchant house and supported roof terrace",
+      "padding": 3,
+      "walk": 0.17464114832535885
+    },
+    "workshop": {
+      "url": "workshop.webp",
+      "width": 478,
+      "height": 286,
+      "sourceUrl": "source.png",
+      "sourceRect": [
+        528,
+        180,
+        478,
+        286
+      ],
+      "role": "stone workshop and slate roof",
+      "padding": 3,
+      "walk": 0.08391608391608392
+    },
+    "stairs": {
+      "url": "stairs.webp",
+      "width": 492,
+      "height": 325,
+      "sourceUrl": "source.png",
+      "sourceRect": [
+        1033,
+        143,
+        492,
+        325
+      ],
+      "role": "supported masonry stair and retaining wall",
+      "padding": 3,
+      "highWalk": 0.09538461538461539,
+      "lowWalk": 0.9261538461538461
+    },
+    "cart": {
+      "url": "cart.webp",
+      "width": 490,
+      "height": 272,
+      "sourceUrl": "source.png",
+      "sourceRect": [
+        10,
+        702,
+        490,
+        272
+      ],
+      "role": "collapsed freight wagon with low crawlspace",
+      "padding": 3
+    },
+    "scaffold": {
+      "url": "scaffold.webp",
+      "width": 1009,
+      "height": 1101,
+      "sourceUrl": "scaffold-source.png",
+      "sourceRect": [
+        169,
+        41,
+        1009,
+        1101
+      ],
+      "role": "damaged chimney, hoist and falling rubble origin",
+      "padding": 3,
+      "hazardOriginX": 0.57
+    },
+    "seal": {
+      "url": "seal.webp",
+      "width": 931,
+      "height": 952,
+      "sourceUrl": "seal-source.png",
+      "sourceRect": [
+        331,
+        19,
+        931,
+        952
+      ],
+      "role": "four-dial street gate lock on masonry pier",
+      "padding": 3
+    },
+    "timber": {
+      "url": "timber.webp",
+      "width": 440,
+      "height": 20,
+      "sourceUrl": "source.png",
+      "sourceRect": [
+        40,
+        126,
+        440,
+        20
+      ],
+      "role": "painted timber surface for open stair structure",
+      "material": true
+    },
+    "barricade-extended": {
+      "url": "barricade-extended.webp",
+      "width": 1038,
+      "height": 518,
+      "sourceUrl": "barricade-source.png",
+      "sourceRect": [
+        17,
+        134,
+        1038,
+        518
+      ],
+      "padding": 3,
+      "ground": 0.5907335907335908,
+      "role": "extended garrison street barricade"
+    },
+    "barricade-retracted": {
+      "url": "barricade-retracted.webp",
+      "width": 1038,
+      "height": 242,
+      "sourceUrl": "barricade-source.png",
+      "sourceRect": [
+        1103,
+        410,
+        1038,
+        242
+      ],
+      "padding": 3,
+      "ground": 0.12396694214876033,
+      "role": "retracted garrison street barricade"
+    },
+    "lantern-part": {
+      "url": "lantern-part.webp",
+      "width": 190,
+      "height": 280,
+      "sourceUrl": "scaffold-source.png",
+      "sourceRect": [
+        1020,
+        480,
+        190,
+        280
+      ],
+      "part": true,
+      "role": "painted iron lantern and timber attachment"
+    },
+    "guild-plaque": {
+      "url": "guild-plaque.webp",
+      "width": 64,
+      "height": 97,
+      "sourceUrl": "source.png",
+      "sourceRect": [
+        438,
+        270,
+        64,
+        97
+      ],
+      "part": true,
+      "role": "merchant guild scales plaque and hanging bracket"
+    },
+    "stone-plinth": {
+      "url": "stone-plinth.webp",
+      "width": 142,
+      "height": 40,
+      "sourceUrl": "source.png",
+      "sourceRect": [
+        1050,
+        932,
+        142,
+        40
+      ],
+      "part": true,
+      "role": "masonry plinth beneath a timber street post"
+    }
+  }
+}

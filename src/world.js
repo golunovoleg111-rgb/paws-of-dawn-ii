@@ -1,5 +1,6 @@
-import{finalizeLayout}from'./layout.js?v=050';
-import{CHAPTERS,ENEMY_TYPES}from'./data.js?v=050';import{seeded}from'./model.js?v=050';
+import{authorTown}from'./town-layout.js?v=070';
+import{finalizeLayout}from'./layout.js?v=070';
+import{CHAPTERS,ENEMY_TYPES}from'./data.js?v=070';import{seeded}from'./model.js?v=070';
 // Authored terrain contours. Deep fronts are solid architecture, not a stream of floating tiles.
 const CONTOURS=[
  [[0,900,700],[1000,740,700],[1840,900,620],[2840,800,700],[3750,850,790],[4720,900,700],[5740,900,620],[6750,900,700],[7760,1140,700]],
@@ -44,7 +45,7 @@ export function buildWorld(chapter,seed=1){const d=CHAPTERS[chapter],r=seeded(se
  objects.push(ob('bosscheckpoint','checkpoint',last[0]+110,bossY));if(d.rescue)objects.push(ob('cage','cage',width-290,bossY,{hero:d.rescue}));objects.push(ob('exit','exit',width-110,bossY));
  // Each chapter carries one run-changing shrine, but rewards cannot be duplicated by respawning.
  at(.39,'shrine','shrine',{seed:seed+chapter*77});
- return finalizeLayout({chapter,width,height,solids,ledges,objects,enemies,hazards,anchors,zones,spawn:{x:90,y:terrain[0][2]-72},clock:0,shots:[],fx:[],messages:[],seed,weather:chapter===6?'storm':chapter===1?'rain':chapter===4?'spores':'dust'});
+ return finalizeLayout(authorTown({chapter,width,height,solids,ledges,objects,enemies,hazards,anchors,zones,spawn:{x:90,y:terrain[0][2]-72},clock:0,shots:[],fx:[],messages:[],seed,weather:chapter===6?'storm':chapter===1?'rain':chapter===4?'spores':'dust'}));
 }
 export function entityBox(o){if(o.type==='crate')return{x:o.x,y:o.y-o.h,w:o.w,h:o.h};return{x:o.x-22,y:o.y-65,w:44,h:65}}
 
