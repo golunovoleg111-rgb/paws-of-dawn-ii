@@ -1,4 +1,4 @@
-import{HERO_IDS,ENEMY_IDS,ACTOR_IDS,heroFrame,enemyFrame,validateCast}from'./character-animation.js?v=080';
+import{HERO_IDS,ENEMY_IDS,ACTOR_IDS,heroFrame,enemyFrame,validateCast}from'./character-animation.js?v=110';
 
 // The runtime draws a complete registered frame. There is no joint geometry,
 // body-part assembly, substitute character or alternative rendering path.

@@ -1,9 +1,9 @@
-import{authorTown}from'./town-layout.js?v=080';
-import{finalizeLayout}from'./layout.js?v=080';
-import{CHAPTERS,ENEMY_TYPES}from'./data.js?v=080';import{seeded}from'./model.js?v=080';
+import{buildChapterOne}from'./chapter-one.js?v=110';
+import{finalizeLayout}from'./layout.js?v=110';
+import{CHAPTERS,ENEMY_TYPES}from'./data.js?v=110';import{seeded}from'./model.js?v=110';
 // Authored terrain contours. Deep fronts are solid architecture, not a stream of floating tiles.
 const CONTOURS=[
- [[0,900,700],[1000,740,700],[1840,900,620],[2840,800,700],[3750,850,790],[4720,900,700],[5740,900,620],[6750,900,700],[7760,1140,700]],
+ [], // Chapter one is authored independently in chapter-one.js.
  [[0,780,740],[880,800,820],[1790,900,740],[2800,700,660],[3600,950,740],[4650,800,820],[5560,900,740],[6580,800,660],[7490,1000,740],[8600,1000,740]],
  [[0,800,1000],[900,780,920],[1790,800,840],[2690,700,760],[3500,920,680],[4540,820,760],[5470,900,840],[6480,800,760],[7400,1000,680],[8520,1480,680]],
  [[0,820,780],[920,800,620],[1820,820,780],[2740,800,620],[3650,900,700],[4660,800,540],[5570,850,700],[6530,820,540],[7460,900,700],[8470,950,620],[9540,1260,620]],
@@ -15,7 +15,7 @@ const CONTOURS=[
  [[0,950,1050],[1060,900,970],[2140,850,890],[3110,900,810],[4130,950,890],[5200,900,810],[6220,850,730],[7190,950,810],[8260,1000,730],[9390,1000,650],[10520,2280,650]]
 ];
 const ob=(id,type,x,y,extra={})=>({id,type,x,y,...extra});
-export function buildWorld(chapter,seed=1){const d=CHAPTERS[chapter],r=seeded(seed+chapter*919),[width,height]=d.size,solids=[],ledges=[],objects=[],enemies=[],hazards=[],anchors=[],zones=[];const terrain=CONTOURS[chapter];terrain.forEach(([x,w,y],i)=>{solids.push({id:'ground'+i,x,y,w,h:height-y+250,kind:'stone',oneWay:false,section:i});zones.push({x,end:x+w,y,name:['Окраина','Верхняя улица','Подземная галерея','Сторожевая площадь','Старый мост','Убежище','Внутренний двор','Святилище','Последний переход','Зал стража','Центральная башня'][i%11],index:i});
+export function buildWorld(chapter,seed=1){if(chapter===0)return buildChapterOne(seed);const d=CHAPTERS[chapter],r=seeded(seed+chapter*919),[width,height]=d.size,solids=[],ledges=[],objects=[],enemies=[],hazards=[],anchors=[],zones=[];const terrain=CONTOURS[chapter];terrain.forEach(([x,w,y],i)=>{solids.push({id:'ground'+i,x,y,w,h:height-y+250,kind:'stone',oneWay:false,section:i});zones.push({x,end:x+w,y,name:['Окраина','Верхняя улица','Подземная галерея','Сторожевая площадь','Старый мост','Убежище','Внутренний двор','Святилище','Последний переход','Зал стража','Центральная башня'][i%11],index:i});
  // Tall route transitions in the clock factory have intermediate balconies; double jump offers a direct route.
  if(i>0){const prev=terrain[i-1],end=prev[0]+prev[1],gap=x-end;if(prev[2]-y>35&&prev[2]-y<=100)ledges.push({id:'approach'+i,x:end-100,y:prev[2]-55,w:Math.max(200,gap+120),h:34,oneWay:true,kind:'balcony'});if(prev[2]-y>100)ledges.push({id:'step'+i,x:end-50,y:prev[2]-80,w:120,h:26,oneWay:true,kind:'balcony'});if(gap>180&&chapter===6){anchors.push({id:'anchor'+i,x:x+45,y:Math.min(y,prev[2])-130,direction:1},{id:'anchorback'+i,x:end-45,y:Math.min(y,prev[2])-130,direction:-1});}else if(gap>180)ledges.push({id:'bridge'+i,x:end+70,y:Math.min(y,prev[2])-60,w:170,h:28,oneWay:true,kind:chapter===7?'hidden':'bridge',hidden:chapter===7});}
  // Designed side chambers: alternating high and low alcoves, with coins and clues.
@@ -47,7 +47,7 @@ export function buildWorld(chapter,seed=1){const d=CHAPTERS[chapter],r=seeded(se
  objects.push(ob('bosscheckpoint','checkpoint',last[0]+110,bossY,{checkpoint:true,role:'boss-approach'}));if(d.rescue)objects.push(ob('cage','cage',width-290,bossY,{hero:d.rescue}));objects.push(ob('exit','exit',width-110,bossY));
  // Each chapter carries one run-changing shrine, but rewards cannot be duplicated by respawning.
  at(.39,'shrine','shrine',{seed:seed+chapter*77});
- return finalizeLayout(authorTown({chapter,width,height,solids,ledges,objects,enemies,hazards,anchors,zones,spawn:{x:90,y:terrain[0][2]-72},clock:0,shots:[],fx:[],messages:[],seed,weather:chapter===6?'storm':chapter===1?'rain':chapter===4?'spores':'dust'}));
+ return finalizeLayout({chapter,width,height,solids,ledges,objects,enemies,hazards,anchors,zones,spawn:{x:90,y:terrain[0][2]-72},clock:0,shots:[],fx:[],messages:[],seed,weather:chapter===6?'storm':chapter===1?'rain':chapter===4?'spores':'dust'});
 }
 export function entityBox(o){if(o.type==='crate')return{x:o.x,y:o.y-o.h,w:o.w,h:o.h};return{x:o.x-22,y:o.y-65,w:44,h:65}}
 

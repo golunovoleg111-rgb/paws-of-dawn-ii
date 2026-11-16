@@ -6,7 +6,7 @@ test('all chapters have two safe return points, one merchant and no duplicate ow
   assert.ok(w.objects.filter(o=>o.type==='campfire').every(o=>o.healOnly&&o.checkpoint===false));
   for(const p of points){const box={x:p.x-20,y:p.y-72,w:30,h:72};assert.ok(!w.solids.filter(b=>!b.oneWay).some(b=>overlaps(box,b)),`blocked checkpoint ${chapter}/${p.id}`)}
   for(const h of w.hazards){assert.ok(h.source?.visible&&h.source.context&&h.source.attachedTo.id);assert.equal(h.source.originX,h.x+h.w/2)}
-  for(const d of w.doorways){const door=w.objects.find(o=>o.id===d.gateId);assert.equal(door.h,160);assert.equal(door.y+door.h,door.door.floorY);assert.ok(w.solids.some(b=>b.supportsDoor===door.id&&b.y>0&&b.h>0));}
+  for(const d of w.doorways){const door=w.objects.find(o=>o.id===d.gateId);assert.ok(door.h>=160&&door.h===door.door.openingHeight);assert.equal(door.y+door.h,door.door.floorY);assert.ok(w.solids.some(b=>b.supportsDoor===door.id&&b.y>0&&b.h>0));}
   for(const e of w.enemies)assert.ok(!w.objects.filter(o=>['gate','breakwall'].includes(o.type)).some(o=>overlaps(e,o)),`enemy in door ${chapter}/${e.id}`);
  }
 });

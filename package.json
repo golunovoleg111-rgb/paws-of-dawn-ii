@@ -1,6 +1,6 @@
 {
   "name": "paws-of-dawn-ii",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,7 +8,8 @@
     "dev": "node scripts/serve.js",
     "build:cast": "node scripts/build-cast.cjs",
     "build:town": "node scripts/pack-town.cjs",
-    "build:world-props": "node scripts/pack-world-props.cjs"
+    "build:world-props": "node scripts/pack-world-props.cjs",
+    "build:chapter-one": "node scripts/pack-chapter-one-props.cjs"
   },
   "devDependencies": {
     "sharp": "0.35.5"

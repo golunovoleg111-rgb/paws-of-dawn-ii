@@ -15,7 +15,7 @@ const CAMPUS=[
  {shop:[1,180,'Последний обоз'],checkpoint:[5,180,'Караульная у внутренней стены'],rest:[7,180,'Очаг освобождённых стражей']}
 ];
 const supportFor=(world,x)=>world.solids.find(b=>b.id?.startsWith('ground')&&x>=b.x&&x<b.x+b.w);
-export function enforceWorldPolicy(world){
+export function enforceWorldPolicy(world){if(world.chapter===0)return world;
  const ground=world.solids.filter(b=>b.id?.startsWith('ground')).sort((a,b)=>a.x-b.x),plan=CAMPUS[world.chapter];
  const place=(o,spec)=>{const b=ground[spec[0]];o.x=b.x+spec[1];o.y=b.y;o.name=spec[2];o.supportId=b.id;return o};
  const ori=world.objects.find(o=>o.id==='ori'),shop=world.objects.find(o=>o.id==='trader');

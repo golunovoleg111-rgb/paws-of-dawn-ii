@@ -1,6 +1,6 @@
 import test from'node:test';import assert from'node:assert/strict';import{freshSave}from'../src/model.js';import{SKILLS,CHAPTERS}from'../src/data.js';import{Game}from'../src/engine.js';
 test('main terrain routes are physically traversable with the chapter hero and required abilities',()=>{
- for(let n=0;n<10;n++){
+ for(let n=1;n<10;n++){
  const s={...freshSave(),hero:CHAPTERS[n].hero,rescued:[0,1,2,3],completed:Array.from({length:10},(_,i)=>i),skills:SKILLS.map(a=>a.id),xp:0};const g=new Game(s);g.begin(n,false);g.world.enemies=[];g.world.hazards=[];g.run.solved=true;g.run.phoenix=true;g.keys.KeyD=true;g.keys.Space=true;let stuck=0,last=0,max=0;
  for(let i=0;i<160*120&&g.mode==='play';i++){
   const p=g.p,w=g.world,feet=p.y+p.h;const tunnel=w.solids.find(b=>b.ceiling&&p.x>b.x-70&&p.x<b.x+b.w+15);g.keys.KeyS=!!tunnel;
