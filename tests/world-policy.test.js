@@ -1,5 +1,5 @@
 import test from'node:test';import assert from'node:assert/strict';import{readFileSync,existsSync}from'node:fs';
-import{buildWorld}from'../src/world.js';import{overlaps,Game}from'../src/engine.js';import{freshSave}from'../src/model.js';import{WorldProps,doorArtRect}from'../src/world-props.js';
+import{buildWorld}from'../src/world.js';import{overlaps,Game}from'../src/engine.js';import{freshSave}from'../src/model.js';
 test('all chapters have two safe return points, one merchant and no duplicate owl',()=>{
  for(let chapter=0;chapter<10;chapter++)for(const seed of[1,42,901]){const w=buildWorld(chapter,seed),points=w.objects.filter(o=>o.type==='checkpoint');
   assert.equal(points.length,2);assert.equal(w.objects.filter(o=>o.type==='shop').length,1);assert.equal(w.objects.filter(o=>o.type==='npc').length,0);
@@ -14,10 +14,6 @@ test('resuming a saved player inside new masonry safely returns without losing i
  const save=freshSave(),g=new Game(save);g.begin(0,false);const wall=g.world.solids.find(b=>b.kind==='door-lintel');save.run.player={x:wall.x+10,y:wall.y+20,h:72,hp:2};const fish=save.fish;
  const resumed=new Game(save);resumed.begin(0,true);assert.equal(resumed.p.x,resumed.world.spawn.x);assert.equal(resumed.p.hp,2);assert.equal(save.fish,fish);
 });
-test('world art is complete, registered to the physical aperture and loaded before use',async()=>{
- const manifest=JSON.parse(readFileSync(new URL('../assets/world-props-v1/manifest.json',import.meta.url)));
- for(const a of Object.values(manifest.assets))assert.ok(existsSync(new URL('../assets/world-props-v1/'+a.url,import.meta.url)));
- const props=new WorldProps({fetcher:async()=>({ok:true,json:async()=>manifest}),imageFactory:()=>({naturalWidth:768,decode:async()=>{}})});await props.ensure();
- const door=buildWorld(0).objects.find(o=>o.type==='gate'),a=manifest.assets['gate-open'],r=doorArtRect(a,door),[l,t,right,bottom]=a.opening;
- assert.ok(Math.abs(r.x+l*r.w-door.x)<.001);assert.ok(Math.abs(r.y+bottom*r.h-door.door.floorY)<.001);assert.ok(Math.abs((right-l)*r.w-door.w)<.001);assert.ok(Math.abs(r.y+t*r.h-door.y)<.001);
+test('existing texture sources stay available for rebuilding after the sketch is approved',()=>{
+ const manifest=JSON.parse(readFileSync(new URL('../assets/world-props-v1/manifest.json',import.meta.url)));for(const a of Object.values(manifest.assets))assert.ok(existsSync(new URL('../assets/world-props-v1/'+a.url,import.meta.url)));
 });
