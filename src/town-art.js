@@ -66,7 +66,7 @@ export class TownArt{
   if(this.error||!this.manifest||world.chapter!==0)return false;
   const width=cam.width||1280,height=cam.height||720;
   for(const a of world.architecture||[]){if((a.layer||'back')!==layer)continue;let rect=a;
-   if(a.type==='scaffold'&&a.hazardId){const hazard=world.hazards.find(h=>h.id===a.hazardId);if(!hazard)continue;const asset=this.manifest.assets.scaffold,w=a.w||230,h=a.h||w*asset.height/asset.width;rect={...a,x:hazard.x+hazard.w/2-w*(asset.hazardOriginX??.57),y:hazard.y+hazard.h-h,w,h}}
+   if(a.type==='scaffold'&&a.hazardId){const hazard=world.hazards.find(h=>h.id===a.hazardId);if(!hazard)continue;const asset=this.manifest.assets.scaffold,w=a.w||230,h=hazard.source?hazard.y+hazard.h-hazard.source.originY:a.h||w*asset.height/asset.width;rect={...a,x:hazard.x+hazard.w/2-w*(asset.hazardOriginX??.57),y:hazard.y+hazard.h-h,w,h}}
    const viewRect=['merchant','workshop'].includes(rect.type)?buildingRect(this.manifest.assets[rect.type],rect):rect;
    if(viewRect.x+viewRect.w<cam.x-60||viewRect.x>cam.x+width+60||viewRect.y+(viewRect.h||500)<cam.y-80||viewRect.y>cam.y+height+80)continue;
    if(rect.type==='stairs')this.drawStairs(c,rect,world);else if(rect.type==='lantern'||rect.type==='waypost')this.drawStreetProp(c,rect);else this.drawBuilding(c,rect);

@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "style": "painted-moonlit-fantasy",
+  "version": "1.0.0",
+  "assets": {
+    "fish": {
+      "url": "fish.webp",
+      "width": 320,
+      "height": 127,
+      "sourceUrl": "fish-source.png",
+      "sourceRect": [
+        438,
+        120,
+        1248,
+        497
+      ],
+      "padding": 3,
+      "sourceBox": {
+        "left": 438,
+        "top": 120,
+        "width": 1248,
+        "height": 497
+      }
+    },
+    "gate-closed": {
+      "url": "gate-closed.webp",
+      "width": 701,
+      "height": 767,
+      "sourceUrl": "doors-source.png",
+      "sourceRect": [
+        93,
+        59,
+        701,
+        767
+      ],
+      "padding": 3,
+      "sourceBox": {
+        "left": 93,
+        "top": 59,
+        "width": 701,
+        "height": 767
+      },
+      "opening": [
+        0.2582025677603424,
+        0.3754889178617992,
+        0.7446504992867332,
+        0.9960886571056062
+      ]
+    },
+    "gate-open": {
+      "url": "gate-open.webp",
+      "width": 701,
+      "height": 767,
+      "sourceUrl": "doors-source.png",
+      "sourceRect": [
+        980,
+        59,
+        701,
+        767
+      ],
+      "padding": 3,
+      "sourceBox": {
+        "left": 93,
+        "top": 59,
+        "width": 701,
+        "height": 767
+      },
+      "opening": [
+        0.2582025677603424,
+        0.3754889178617992,
+        0.7446504992867332,
+        0.9960886571056062
+      ]
+    },
+    "rock-fault": {
+      "url": "rock-fault.webp",
+      "width": 738,
+      "height": 310,
+      "sourceUrl": "sources-source.png",
+      "sourceRect": [
+        23,
+        72,
+        738,
+        310
+      ],
+      "padding": 3,
+      "sourceBox": {
+        "left": 23,
+        "top": 72,
+        "width": 738,
+        "height": 310
+      },
+      "origin": [
+        0.5,
+        0.91
+      ]
+    },
+    "furnace-conduit": {
+      "url": "furnace-conduit.webp",
+      "width": 630,
+      "height": 428,
+      "sourceUrl": "sources-source.png",
+      "sourceRect": [
+        854,
+        18,
+        630,
+        428
+      ],
+      "padding": 3,
+      "sourceBox": {
+        "left": 86,
+        "top": 18,
+        "width": 630,
+        "height": 428
+      },
+      "origin": [
+        0.13,
+        0.84
+      ]
+    },
+    "magma-channel": {
+      "url": "magma-channel.webp",
+      "width": 682,
+      "height": 468,
+      "sourceUrl": "sources-source.png",
+      "sourceRect": [
+        56,
+        512,
+        682,
+        468
+      ],
+      "padding": 3,
+      "sourceBox": {
+        "left": 56,
+        "top": 0,
+        "width": 682,
+        "height": 468
+      },
+      "origin": [
+        0.13,
+        0.83
+      ]
+    },
+    "tower-wall": {
+      "url": "tower-wall.webp",
+      "width": 269,
+      "height": 485,
+      "sourceUrl": "sources-source.png",
+      "sourceRect": [
+        1022,
+        512,
+        269,
+        485
+      ],
+      "padding": 3,
+      "sourceBox": {
+        "left": 254,
+        "top": 0,
+        "width": 269,
+        "height": 485
+      }
+    },
+    "scaffold": {
+      "url": "../town-v1/scaffold.webp",
+      "width": 1009,
+      "height": 1101,
+      "sourceUrl": "../town-v1/scaffold-source.png",
+      "sourceRect": [
+        169,
+        41,
+        1009,
+        1101
+      ],
+      "role": "damaged chimney, hoist and falling rubble origin",
+      "padding": 3,
+      "hazardOriginX": 0.57
+    }
+  }
+}

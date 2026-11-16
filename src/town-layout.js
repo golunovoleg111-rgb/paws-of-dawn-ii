@@ -10,6 +10,7 @@ const ROOFS=[
  {id:'inn',type:'merchant',x:7040,y:490,w:360,ground:700,label:'Терраса постоялого двора',stairs:[6750,290,700,1]}
 ];
 const NAMES=['Площадь фонарщика','Улица портных','Кузнечный подъём','Аптекарский квартал','Двор каменщика','Площадь четырёх гильдий','Караульная терраса','Постоялый двор','Северные ворота'];
+const TOWN_ADVICE=' Под повозкой впереди можно проползти на S. На крыши ведут наружные лестницы: запрыгни на деревянный марш, затем двигайся к верхней площадке. У кузницы не наступай на стражевое заграждение, у строительных лесов следи за осыпающимся кирпичом.';
 
 // Step assistance is exclusive to authored risers. Optional open flights are
 // entered by jumping onto them; walking below one must not pull the hero up.
@@ -64,7 +65,7 @@ export function authorTown(world){
 
  // Reward IDs survive the layout revision, so old loot cannot be farmed again.
  const places={stash1:[1460,450,'town-roof-haberdasher'],chest2:[2380,430,'town-roof-smithy'],stash3:[3290,450,'town-roof-apothecary'],chest4:[4290,600,'town-roof-mason'],stash5:[5350,700,'ground5'],chest6:[6260,435,'town-roof-watchhouse'],stash7:[7240,490,'town-roof-inn']};
- for(const o of world.objects){if(places[o.id]){[o.x,o.y,o.supportId]=places[o.id]}if(o.id==='ori'){o.x=190;o.y=700;o.text+=' Под повозкой впереди можно проползти на S. На крыши ведут наружные лестницы: запрыгни на деревянный марш, затем двигайся к верхней площадке. У кузницы не наступай на стражевое заграждение, у строительных лесов следи за осыпающимся кирпичом.'}if(o.id==='trader'){o.x=430;o.y=700;o.name='Лавка на площади фонарщика'}if(o.id==='checkpoint0.5'){o.x=4800;o.y=700}if(o.id==='clue'){o.name='Оттиск с городского колокола';o.mechanismClue=true;o.text='У аптекарского дома приколот сургучный оттиск из старой звонницы. На ободе: III · I · IV · II. Это порядок четырёх цеховых печатей на замке северной решётки. До осады горожане звонили так, когда открывали дорогу к акведуку.'}}
+ for(const o of world.objects){if(places[o.id]){[o.x,o.y,o.supportId]=places[o.id]}if(o.id==='ori'){o.x=190;o.y=700;o.text+=TOWN_ADVICE}if(o.id==='trader'){o.x=430;o.y=700;o.name='Лавка на площади фонарщика';o.dialogue=(o.dialogue||'')+TOWN_ADVICE}if(o.id==='checkpoint0.5'){o.x=4800;o.y=700}if(o.id==='clue'){o.name='Оттиск с городского колокола';o.mechanismClue=true;o.text='У аптекарского дома приколот сургучный оттиск из старой звонницы. На ободе: III · I · IV · II. Это порядок четырёх цеховых печатей на замке северной решётки. До осады горожане звонили так, когда открывали дорогу к акведуку.'}}
  // Readable world information has no collision or reward. Unlike the actual
  // bell imprint, these plaques must not reveal the mechanism's code.
  world.architecture.push(
